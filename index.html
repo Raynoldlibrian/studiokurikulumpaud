@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff8ec">
+  <meta name="description" content="Studio Kurikulum PAUD — sahabat guru PAUD untuk merancang pembelajaran yang menyenangkan dan bermakna.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <title>Studio Kurikulum PAUD | Sahabat Guru Hebat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#24436b;--muted:#657b91;--cream:#fff8ec;--paper:#fffefa;
+      --blue:#42b7e9;--blue-deep:#167bb8;--yellow:#ffc94f;--coral:#ff7e86;
+      --green:#53b889;--lilac:#a28bea;--teal:#36b9b0;--line:#e9e5d9;
+      --shadow:0 14px 38px rgba(50,83,112,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;font-family:'Nunito',sans-serif;color:var(--ink);
+      background:radial-gradient(ellipse at 5% 8%,#d9f4ff 0,transparent 28%),
+                 radial-gradient(ellipse at 96% 18%,#ffebc4 0,transparent 24%),
+                 radial-gradient(ellipse at 85% 90%,#d9f5e6 0,transparent 25%),var(--cream);
+      overflow-x:hidden}
+    button,input,a{-webkit-tap-highlight-color:transparent}
+    a{color:inherit}
+    .decor{position:fixed;z-index:0;pointer-events:none;font-size:clamp(24px,4vw,44px);opacity:.6;animation:floaty 7s ease-in-out infinite}
+    .d1{top:9%;left:3%;animation-delay:-1s}.d2{top:20%;right:4%;animation-delay:-3s}.d3{bottom:12%;left:5%;animation-delay:-4s}.d4{bottom:8%;right:7%;animation-delay:-2s}
+    .page{position:relative;z-index:1;width:min(100% - 32px,850px);margin:0 auto;padding:34px 0 24px}
+    .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{width:52px;height:52px;border-radius:18px;background:linear-gradient(145deg,#fff,#e3f7ff);display:grid;place-items:center;box-shadow:0 7px 18px #a7ddeb66;border:1px solid #fff;font-size:28px}
+    .brand-name{font:800 1.35rem/1 'Baloo 2',cursive;letter-spacing:.2px}
+    .brand-name span{color:#f39a25}.brand-sub{font-size:.75rem;font-weight:800;color:var(--muted);margin-top:4px;letter-spacing:.5px}
+    .install{border:0;border-radius:999px;padding:11px 16px;background:var(--ink);color:white;font:800 .85rem 'Nunito',sans-serif;display:flex;align-items:center;gap:8px;cursor:pointer;box-shadow:0 6px 14px #24436b26;transition:transform .2s,background .2s}
+    .install:hover{transform:translateY(-2px);background:#315b87}.install[hidden]{display:none}
+    .hero{position:relative;isolation:isolate;overflow:hidden;min-height:240px;border-radius:30px;padding:30px clamp(22px,5vw,44px);background:linear-gradient(112deg,#dff6ff 0%,#eafaff 48%,#fff1d6 100%);border:1px solid #fff;box-shadow:var(--shadow);display:flex;align-items:center}
+    .hero:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-45px;top:-80px;background:#fff9;z-index:-1}
+    .hero:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:23%;bottom:-90px;background:#b9e8ce99;z-index:-1}
+    .hero-copy{max-width:480px}
+    .eyebrow{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;background:#ffffffc9;color:#247fa9;font-size:.75rem;font-weight:900;margin-bottom:10px}
+    h1{font:800 clamp(1.9rem,5vw,2.8rem)/1.02 'Baloo 2',cursive;margin:0 0 10px;letter-spacing:-.5px;color:#1c5684}
+    .hero p{max-width:440px;margin:0;color:#476b84;line-height:1.65;font-size:.98rem;font-weight:700}
+    .hero-art{position:absolute;right:26px;bottom:5px;font-size:clamp(90px,16vw,150px);filter:drop-shadow(0 10px 8px #5d9a9b22);animation:bob 4s ease-in-out infinite;user-select:none}
+    .hero-spark{position:absolute;right:24%;top:25px;font-size:30px;animation:twinkle 3s ease-in-out infinite}
+    .search-area{margin:22px 0 25px;display:flex;align-items:center;gap:10px}
+    .search{flex:1;position:relative}
+    .search span{position:absolute;left:17px;top:50%;transform:translateY(-50%);font-size:18px}
+    .search input{width:100%;padding:15px 18px 15px 48px;border:2px solid #eee8db;border-radius:17px;background:#fffefa;color:var(--ink);font:700 .95rem 'Nunito',sans-serif;outline:none;box-shadow:0 5px 15px #344e6310;transition:border .2s,box-shadow .2s}
+    .search input:focus{border-color:#75c9e8;box-shadow:0 0 0 4px #75c9e82b}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:0 3px 14px}
+    h2{font:800 1.45rem 'Baloo 2',cursive;margin:0;color:#2d5276}
+    .section-head p{margin:0;color:var(--muted);font-size:.82rem;font-weight:700}
+    .links-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+    .link-card{position:relative;min-height:142px;padding:19px;display:flex;align-items:flex-start;gap:14px;border-radius:23px;text-decoration:none;background:var(--paper);border:1px solid #fff;box-shadow:0 7px 22px #435c7410;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .25s;animation:appear .55s both}
+    .link-card:nth-child(2){animation-delay:.08s}.link-card:nth-child(3){animation-delay:.16s}
+    .link-card:hover{transform:translateY(-5px);box-shadow:0 15px 28px #435c7420;border-color:#b9e8f6}
+    .link-card:focus-visible,.install:focus-visible{outline:3px solid #168bc4;outline-offset:4px}
+    .link-icon{width:58px;height:58px;flex:0 0 58px;border-radius:19px;display:grid;place-items:center;font-size:29px;box-shadow:inset 0 -4px 0 #0000000a}
+    .tone-yellow{background:#fff0cb}.tone-blue{background:#dff5ff}.tone-green{background:#dff6e8}.tone-lilac{background:#eee7ff}
+    .link-info{min-width:0;padding-top:2px}
+    .link-title{font:800 1.08rem/1.25 'Baloo 2',cursive;margin:0 0 5px;color:#284c70}
+    .link-desc{font-size:.83rem;line-height:1.5;color:#6a7f92;font-weight:700}
+    .arrow{position:absolute;right:15px;bottom:14px;width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#f0f8fb;color:#328bb6;font-size:15px;transition:transform .2s}
+    .link-card:hover .arrow{transform:translateX(3px)}
+    .empty{display:none;text-align:center;padding:28px 16px;border:2px dashed #d8e8ed;border-radius:20px;color:var(--muted);font-weight:800;background:#ffffff8c}
+    .empty.show{display:block}
+    .note{margin-top:23px;display:flex;align-items:center;gap:12px;padding:14px 17px;border-radius:19px;background:#e5f6f5;border:1px solid #d4efeb;color:#356d76;font-size:.85rem;line-height:1.5;font-weight:800}
+    .note-icon{font-size:24px}
+    footer{text-align:center;padding:25px 0 4px;color:#8291a0;font-size:.78rem;font-weight:700}
+    footer .heart{color:#f47d87;display:inline-block;animation:heartbeat 1.8s ease-in-out infinite}
+    .toast{position:fixed;z-index:5;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#24436b;color:white;padding:12px 18px;border-radius:14px;box-shadow:var(--shadow);font-size:.85rem;font-weight:800;transition:all .25s;text-align:center;width:max-content;max-width:calc(100% - 32px)}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @keyframes floaty{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-14px) rotate(5deg)}}
+    @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+    @keyframes twinkle{0%,100%{transform:scale(.85) rotate(0);opacity:.65}50%{transform:scale(1.15) rotate(15deg);opacity:1}}
+    @keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+    @keyframes appear{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:580px){.page{width:min(100% - 24px,850px);padding-top:20px}.brand-mark{width:45px;height:45px;border-radius:15px}.brand-name{font-size:1.18rem}.brand-sub{font-size:.68rem}.install{padding:10px 12px;font-size:.78rem}.hero{min-height:250px;padding:25px 22px 100px;border-radius:25px}.hero-art{font-size:94px;right:18px;bottom:-5px}.hero-copy{max-width:100%}.hero p{font-size:.9rem}.links-list{grid-template-columns:1fr;gap:12px}.link-card{min-height:112px;padding:16px}.section-head{align-items:start;flex-direction:column;gap:2px}.decor{opacity:.35}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <span class="decor d1" aria-hidden="true">☀️</span><span class="decor d2" aria-hidden="true">🌈</span>
+  <span class="decor d3" aria-hidden="true">🌼</span><span class="decor d4" aria-hidden="true">🫧</span>
+  <main class="page">
+    <header class="topline">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">🌱</div>
+        <div><div class="brand-name">Studio <span>PAUD</span></div><div class="brand-sub">SAHABAT GURU HEBAT</div></div>
+      </div>
+      <button id="installBtn" class="install" type="button" hidden><span>⬇️</span> Pasang Aplikasi</button>
+    </header>
+
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <div class="eyebrow">✨ RUANG KREASI GURU PAUD</div>
+        <h1 id="heroTitle">Belajar Ceria,<br>Berbagi Inspirasi!</h1>
+        <p>Teman tumbuh untuk guru hebat. Rancang pembelajaran yang menyenangkan, bermakna, dan dekat dengan dunia anak.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">🧑‍🏫</div>
+      <div class="hero-spark" aria-hidden="true">✦</div>
+    </section>
+
+    <section class="search-area" aria-label="Pencarian modul">
+      <label class="search"><span aria-hidden="true">🔎</span><input type="search" id="searchInput" placeholder="Cari modul pembelajaran..." autocomplete="off" aria-label="Cari modul atau edukasi"></label>
+    </section>
+
+    <section aria-labelledby="menuTitle">
+      <div class="section-head"><h2 id="menuTitle">Yuk, mulai berkarya! 🎨</h2><p id="resultCount">3 modul tersedia</p></div>
+      <div class="links-list" id="linksList">
+        <a href="Aplikasi-Rencana-Pembelajaran-Paud-8-Dimensi-Profil-Lulusan.html" class="link-card">
+          <div class="link-icon tone-yellow" aria-hidden="true">📚</div>
+          <div class="link-info"><div class="link-title">Rencana Pembelajaran PAUD</div><div class="link-desc">Rancang kegiatan belajar mendalam berbasis kearifan lokal.</div></div><span class="arrow" aria-hidden="true">➜</span>
+        </a>
+        <a href="Rancang-Paud-Deep-Learning.html" class="link-card">
+          <div class="link-icon tone-blue" aria-hidden="true">🧩</div>
+          <div class="link-info"><div class="link-title">Rancang PAUD</div><div class="link-desc">Susun ide dan perencanaan pembelajaran yang bermakna.</div></div><span class="arrow" aria-hidden="true">➜</span>
+        </a>
+        <a href="Generator KSP PAUD.html" class="link-card">
+          <div class="link-icon tone-green" aria-hidden="true">🌱</div>
+          <div class="link-info"><div class="link-title">Generator KSP PAUD</div><div class="link-desc">Bantu penyusunan kurikulum satuan pendidikan PAUD.</div></div><span class="arrow" aria-hidden="true">➜</span>
+        </a>
+      </div>
+      <div id="emptyState" class="empty">🌼 Modul belum ditemukan. Coba kata kunci lain, ya!</div>
+    </section>
+
+    <aside class="note"><span class="note-icon" aria-hidden="true">💛</span><span>Setiap anak punya cara tumbuh yang istimewa. Teruslah berkarya dan ciptakan pengalaman belajar yang penuh makna!</span></aside>
+    <footer>© Dessy Sulistiyowati · Bidang PPPASN BKPPD Inhu · 2026<br>Dibuat dengan <span class="heart">♥</span> untuk guru PAUD hebat</footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const cards = [...document.querySelectorAll('.link-card')];
+    const emptyState = document.getElementById('emptyState');
+    const resultCount = document.getElementById('resultCount');
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.trim().toLocaleLowerCase('id');
+      let shown = 0;
+      cards.forEach(card => {
+        const match = card.innerText.toLocaleLowerCase('id').includes(term);
+        card.style.display = match ? 'flex' : 'none';
+        if (match) shown++;
+      });
+      emptyState.classList.toggle('show', shown === 0);
+      resultCount.textContent = `${shown} modul ${shown === 1 ? 'tersedia' : 'tersedia'}`;
+    });
+
+    let deferredInstallPrompt;
+    const installBtn = document.getElementById('installBtn');
+    const toast = document.getElementById('toast');
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      installBtn.hidden = false;
+    });
+    installBtn.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) {
+        showToast('Gunakan menu browser “Instal aplikasi” atau “Tambahkan ke layar utama”.');
+        return;
+      }
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installBtn.hidden = true;
+    });
+    window.addEventListener('appinstalled', () => {
+      installBtn.hidden = true;
+      showToast('Studio PAUD berhasil dipasang. Selamat berkarya! 🌱');
+    });
+    if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.warn('Service Worker belum aktif:', err));
+      });
+    }
+  </script>
+</body>
+</html>
